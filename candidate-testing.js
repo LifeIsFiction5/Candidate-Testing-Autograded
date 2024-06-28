@@ -13,15 +13,15 @@ let candidateAnswer = "";
 
 //TODO: Variables for Part 2
 let questions = [
-"Who was the first American woman in space?",
-"True or false: 5 kilometer == 5000 meters?",
-"(5 + 3)/2 * 10 = ?",
-"Given the array ['8', 'orbit', 'Trajectory', '45'], what entry is at index 2?",
-"What is the minimum crew size for the ISS?",
+"Who was the first American woman in space? ",
+"True or false: 5 kilometer == 5000 meters? ",
+"(5 + 3)/2 * 10 = ? ",
+"Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
+"What is the minimum crew size for the ISS? "
 ];
 
 "Make an array of Q here on an index and store each answer in an array"; //Questions within array will have index value, as will answers. 
-//comparing the two will be a function
+
 let correctAnswers = [
 "Sally Ride",
 "true",
@@ -30,13 +30,7 @@ let correctAnswers = [
 "3",
 ];
 
-let candidateAnswers = [
-"",
-"",
-"",
-"",
-"",
-];
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -48,8 +42,12 @@ candidateName = input.question("Please enter your first and last name: ");
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
 
-  candidateAnswer = input.question(`${question}`)
 
+for (let i = 0; i < questions.length; i++){
+    candidateAnswers.push(input.question(`${i + 1}) ${questions[i]} 
+Your Answer: `));
+ console.log(`Correct Answer: ${correctAnswers[i]}\n`);
+  }
 }
 
 //!!input is an object.  Remember the '.' is an access modifier, and question is the method
@@ -57,19 +55,30 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
   //think of Candidateanwser and correctAnswer as a string.  They're a variable that is a string, so we may use string method on them.
+  //comparing the two will be a function
 
+let sum = 0;
 
-if (candidateAnswer.toLowerCase() == correctAnswer.toLowerCase()) {
-console.log("That's right!")
-} else {
-  console.log("Not quite!")
+ for  (let i = 0; i < correctAnswers.length; i++) {
+  if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
+ sum++;
 }
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+ }
+  let grade = sum / questions.length * 100;
+  
+  
+  //TODO 3.2 use this variable to calculate the candidates score. //need a sum of the numbers
 
+
+  console.log(`Your score is ${grade}%, you got ${sum} correct out of ${questions.length}`);
+
+if (grade >= 80) {
+  console.log("you passed!");
+} else {
+  console.log("Sorry, you failed this time!");
+}
 
   return grade;
 }
