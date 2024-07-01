@@ -20,7 +20,7 @@ let questions = [
 "What is the minimum crew size for the ISS? "
 ];
 
-"Make an array of Q here on an index and store each answer in an array"; //Questions within array will have index value, as will answers. 
+//Questions within array will have index value, as will answers. 
 
 let correctAnswers = [
 "Sally Ride",
